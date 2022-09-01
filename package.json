@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "spell": "cspell ./src/**/*"
+    "spell": "cspell ./src/**"
   },
   "dependencies": {
     "@fullstacksjs/toolbox": "2.19.0",
