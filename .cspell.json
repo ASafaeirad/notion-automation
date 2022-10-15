@@ -5,10 +5,13 @@
   ],
   "words": [
     "arrowParens",
+    "dmenu",
     "estateguru",
     "fullstacks",
     "fullstacksjs",
     "notionhq",
-    "usetube"
+    "rofi",
+    "usetube",
+    "neovim"
   ]
 }
