@@ -27,4 +27,8 @@ export class RoutineDatabase {
       },
     });
   }
+
+  public addRoutines(routines: Routine[]) {
+    return Promise.all(routines.map(routine => this.addRoutine(routine)));
+  }
 }
