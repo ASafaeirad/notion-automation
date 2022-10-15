@@ -61,7 +61,7 @@ const project = await Rofi.select<ProjectName>(
   'Project',
   Object.keys(Projects),
 );
-const offset = await Rofi.text('Offset');
+const offset = await Rofi.optionalText('Offset');
 
 createYoutubeCourse({
   playlist,
