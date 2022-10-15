@@ -63,14 +63,9 @@ const project = await Rofi.select<ProjectName>(
 );
 const offset = await Rofi.optionalText('Offset');
 
-createYoutubeCourse({
+await createYoutubeCourse({
   playlist,
   project,
   offset: toInteger(offset, 0),
   icon: icon ?? 'youtube',
-})
-  .then(() => process.exit(0))
-  .catch(err => {
-    console.error(err);
-    process.exit(1);
-  });
+});
