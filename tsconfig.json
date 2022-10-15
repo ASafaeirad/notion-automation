@@ -1,4 +1,9 @@
 {
-  "extends": "@fullstacksjs/tsconfig",
+  "extends": "@fullstacksjs/tsconfig/esm",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "declaration": false,
+    "outDir": "lib"
+  },
   "include": ["src"]
 }
