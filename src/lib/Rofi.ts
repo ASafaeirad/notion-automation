@@ -5,7 +5,7 @@ const removeLineEnding = (x: string) => x.replace(/(\r\n|\n|\r)/gm, '');
 
 export const Rofi = {
   text: async (name: string) => {
-    const { stdout } = await $`rofi -dmenu -i -p "${name}"`;
+    const { stdout } = await $`rofi -dmenu -i -p ${name}`;
     const text = removeLineEnding(stdout);
 
     if (isNullOrEmpty(text)) {
@@ -17,7 +17,7 @@ export const Rofi = {
   },
 
   optionalText: async (name: string) => {
-    const { stdout } = await $`rofi -dmenu -i -p "${name}"`;
+    const { stdout } = await $`rofi -dmenu -i -p ${name}`;
     return removeLineEnding(stdout);
   },
 
@@ -43,7 +43,7 @@ export const Rofi = {
     return result === 'No' ? undefined : result;
   },
 
-  date: async (name: string) => {
+  relativeDate: async (name: string) => {
     const dates = ['Unassigned', 'Today', 'Tomorrow'] as const;
     const list = dates.join('\n');
     const { stdout } = await $`echo ${list} | rofi -dmenu -i -p ${name}`;
@@ -55,5 +55,13 @@ export const Rofi = {
     };
 
     return map[selected];
+  },
+
+  date: async (name: string) => {
+    const { stdout } = await $`rofi -dmenu -i -p ${name}`;
+    const text = removeLineEnding(stdout);
+    const date = new Date(text);
+    if (isNaN(date.getTime())) throw Error('Invalid date');
+    return date;
   },
 };

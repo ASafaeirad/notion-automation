@@ -31,7 +31,7 @@ const createTask = ({ name, doDate, priority, project }: Options) => {
 };
 
 const name = await Rofi.text('Name');
-const doDate = await Rofi.date('Do Date');
+const doDate = await Rofi.relativeDate('Do Date');
 const priority = await Rofi.optionalSelect<Priority>(
   'Priority',
   Object.keys(Priorities),
