@@ -3,6 +3,7 @@ import type { IconName } from '.';
 export type ProjectName =
   | 'Arch'
   | 'CAMP'
+  | 'Charity'
   | 'English'
   | 'Estateguru'
   | 'Germany'
@@ -28,4 +29,5 @@ export const Projects: Record<ProjectName, Project> = {
   LifeOS: { id: 'e4a1f2ee413141b2afdbf4c8b22c814c', icon: 'notion' },
   Neovim: { id: '2f541fa3adef4c5aa32980a644f86d8b', icon: 'vim' },
   Arch: { id: 'ea5e41bdd97f4282a31af00c491f31d9', icon: 'arch' },
+  Charity: { id: '82529b83e151467b840b9664a2234cc5', icon: 'people' },
 } as const;
