@@ -59,6 +59,7 @@ export const iconNames = [
   'vim',
   'wallet',
   'youtube',
+  'flake',
 ] as const;
 
 export type IconName = typeof iconNames[number];
