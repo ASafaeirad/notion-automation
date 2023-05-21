@@ -22,6 +22,8 @@ export const Projects = {
   Charity: { id: '82529b83e151467b840b9664a2234cc5', icon: 'people' },
   ASafaeirad: { id: '360055d736504f95a8081ea87fea7be0', icon: 'user-tag' },
   Einzelganger: { id: '0b7ee1e6d48d416085aeb590738d0962', icon: 'two-circles' },
+  CodeWar: { id: '2f6075416cb34f849014a4efea6cd815', icon: 'award' },
+  FixOSS: { id: 'd36481d3fbac497b9aed01af5894b2cc', icon: 'judge' },
 } satisfies Record<string, Project>;
 
 export type ProjectName = keyof typeof Projects;
