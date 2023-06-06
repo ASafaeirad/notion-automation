@@ -24,6 +24,7 @@ export const Projects = {
   Einzelganger: { id: '0b7ee1e6d48d416085aeb590738d0962', icon: 'two-circles' },
   CodeWar: { id: '2f6075416cb34f849014a4efea6cd815', icon: 'award' },
   FixOSS: { id: 'd36481d3fbac497b9aed01af5894b2cc', icon: 'judge' },
+  Toolbox: { id: '99ebdc5187dc4be8a1d1a163cfdfdef8', icon: 'strongbox' },
 } satisfies Record<string, Project>;
 
 export type ProjectName = keyof typeof Projects;

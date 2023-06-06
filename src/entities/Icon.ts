@@ -61,6 +61,7 @@ export const iconNames = [
   'youtube',
   'flake',
   'judge',
+  'strongbox',
 ] as const;
 
 export type IconName = typeof iconNames[number];
