@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
 import { isNull } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';

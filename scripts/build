@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-npx tsc
-
-for f in ./lib/*.js; do
-  sudo chmod +x "$f"
-done
-
-echo "Done"

@@ -5,8 +5,7 @@
   "type": "module",
   "scripts": {
     "spell": "cspell ./src/**",
-    "lint": "eslint ./src --ext .ts",
-    "build": "./scripts/build"
+    "lint": "eslint ./src --ext .ts"
   },
   "dependencies": {
     "@fullstacksjs/toolbox": "2.21.0",
