@@ -1,4 +1,4 @@
-import { isNullOrEmpty } from '@fullstacksjs/toolbox';
+import { isNullOrEmptyString } from '@fullstacksjs/toolbox';
 import { startOfTomorrow } from 'date-fns';
 import { $ } from 'zx';
 const removeLineEnding = (x: string) => x.replace(/(\r\n|\n|\r)/gm, '');
@@ -8,7 +8,7 @@ export const Rofi = {
     const { stdout } = await $`rofi -dmenu -i -p ${name}`;
     const text = removeLineEnding(stdout);
 
-    if (isNullOrEmpty(text)) {
+    if (isNullOrEmptyString(text)) {
       console.error("It's required");
       process.exit(1);
     }
