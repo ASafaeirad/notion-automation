@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { range, toInteger } from '@fullstacksjs/toolbox';
+import { range, toDecimal } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
 
 import { config } from './config.js';
@@ -34,7 +34,7 @@ function createBook({
   const client = new Client({ auth: config.notionSecret });
   const action = new ActionDatabase(client);
 
-  const pages = range(pageCount - offset, { step: 1, offset });
+  const pages = range(pageCount - offset, offset, 1);
 
   const tasks = pages.map(page =>
     action.addItem({
@@ -68,8 +68,8 @@ await createBook({
   title,
   dueDate,
   icon,
-  offset: toInteger(offset, 0),
-  pageCount: toInteger(pageCount, 0),
+  offset: toDecimal(offset, 0),
+  pageCount: toDecimal(pageCount, 0),
   priority,
   project,
   unit,

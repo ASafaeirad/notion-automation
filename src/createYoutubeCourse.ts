@@ -1,6 +1,6 @@
 #!/usr/bin/env bun
 
-import { isNull, toInteger } from '@fullstacksjs/toolbox';
+import { isNull, toDecimal } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
 import { addDays } from 'date-fns';
 import { getPlaylistVideos } from 'usetube';
@@ -66,6 +66,6 @@ const offset = await Rofi.optionalText('Offset');
 await createYoutubeCourse({
   playlist,
   project,
-  offset: toInteger(offset, 0),
+  offset: toDecimal(offset, 0),
   icon: icon ?? 'youtube',
 });
