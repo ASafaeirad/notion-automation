@@ -1,14 +1,15 @@
 #!/usr/bin/env bun
 
 import { Client } from '@notionhq/client';
-import { addDays, format } from 'date-fns';
+import { addDays } from 'date-fns';
 
 import { config } from './config.js';
+import { Time } from './entities/Day.js';
 import { queryAll } from './lib/Notion.js';
 
 await splitTasks({
   db: 'd055125e75b8461fa43a083209a612c6',
-  dateProp: 'Due Date',
+  dateProp: 'Do Date',
   sorts: [{ property: 'Name', direction: 'ascending' }],
   filter: {
     and: [
@@ -42,8 +43,14 @@ async function splitTasks({ db, filter, sorts, dateProp }: Args) {
     return notionClient.pages.update({
       page_id: t.id,
       properties: {
-        dateProp: {
-          date: { start: format(addDays(new Date(), index), 'yyyy-MM-dd') },
+        [dateProp]: {
+          date: {
+            start: Time({
+              date: addDays(new Date(), index),
+              hour: 19,
+              minute: 30,
+            }),
+          },
         },
       },
     });
