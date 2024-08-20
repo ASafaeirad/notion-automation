@@ -1,14 +1,13 @@
-#!/usr/bin/env node
+#!/usr/bin/env bun
 
-import { range, toDecimal } from '@fullstacksjs/toolbox';
+import { range } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
+import { addDays, setHours, setMinutes, setSeconds } from 'date-fns';
 
 import { config } from './config.js';
 import type { Priority } from './dbs/index.js';
-import { ActionDatabase, Priorities } from './dbs/index.js';
+import { ActionDatabase } from './dbs/index.js';
 import type { IconName, ProjectName } from './entities/index.js';
-import { iconNames, Projects } from './entities/index.js';
-import { Rofi } from './lib/Rofi.js';
 
 interface Options {
   offset: number;
@@ -34,13 +33,17 @@ function createBook({
   const client = new Client({ auth: config.notionSecret });
   const action = new ActionDatabase(client);
 
-  const pages = range(pageCount - offset, offset, 1);
+  const pages = range(pageCount - offset + 1, offset, 1);
 
   const tasks = pages.map(page =>
     action.addItem({
       name: `${title}: ${unit} ${page}`,
       icon,
       priority,
+      doDate: addDays(
+        setSeconds(setMinutes(setHours(new Date(), 20), 0), 0),
+        page - offset,
+      ),
       project,
       dueDate,
     }),
@@ -49,28 +52,27 @@ function createBook({
   return Promise.all(tasks);
 }
 
-const title = await Rofi.text('Title');
-const offset = await Rofi.text('Offset');
-const pageCount = await Rofi.text('Page Count');
-const dueDate = await Rofi.date('Due Date');
-const priority = await Rofi.optionalSelect<Priority>(
-  'Priority',
-  Object.keys(Priorities),
-);
-const project = await Rofi.select<ProjectName>(
-  'Project',
-  Object.keys(Projects),
-);
-const icon = await Rofi.optionalSelect<IconName>('Icon', iconNames);
-const unit = await Rofi.text('Unit');
+// const title = await Rofi.text('Title');
+// const offset = await Rofi.text('Offset');
+// const pageCount = await Rofi.text('Page Count');
+// const dueDate = await Rofi.date('Due Date');
+// const priority = await Rofi.optionalSelect<Priority>(
+//   'Priority',
+//   Object.keys(Priorities),
+// );
+// const project = await Rofi.select<ProjectName>(
+//   'Project',
+//   Object.keys(Projects),
+// );
+// const icon = await Rofi.optionalSelect<IconName>('Icon', iconNames);
+// const unit = await Rofi.text('Unit');
 
 await createBook({
-  title,
-  dueDate,
-  icon,
-  offset: toDecimal(offset, 0),
-  pageCount: toDecimal(pageCount, 0),
-  priority,
-  project,
-  unit,
+  title: 'SE Practitioners Approach',
+  icon: 'notebook',
+  offset: 77,
+  pageCount: 638,
+  priority: 'Third',
+  project: 'SEPractitionersApproach',
+  unit: 'page',
 });

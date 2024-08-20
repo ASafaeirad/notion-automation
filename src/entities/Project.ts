@@ -27,6 +27,10 @@ export const Projects = {
   Toolbox: { id: '99ebdc5187dc4be8a1d1a163cfdfdef8', icon: 'strongbox' },
   Landing: { id: 'c2212717fb6646afa5b8de0639354751', icon: 'fullstacks' },
   TSGuild: { id: 'd0fb3620aaf642d2adbea0aa9d3dcf58', icon: 'ts' },
+  SEPractitionersApproach: {
+    id: 'a4356df4bc94436ea13416a5d1c9928d',
+    icon: 'notebook',
+  },
 } satisfies Record<string, Project>;
 
 export type ProjectName = keyof typeof Projects;
