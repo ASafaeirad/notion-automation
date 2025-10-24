@@ -4,12 +4,12 @@ import { Client } from '@notionhq/client';
 import { addDays } from 'date-fns';
 
 import { config } from './config.ts';
-import { Database } from './dbs/Database.ts';
+import { DataSources } from './dbs/Database.ts';
 import { Time } from './entities/Day.ts';
 import { queryAll } from './lib/Notion.ts';
 
 await splitTasks({
-  db: Database.Actions,
+  dataSourceId: DataSources.Actions,
   dateProp: 'Do Date',
   sorts: [{ property: 'Name', direction: 'ascending' }],
   filter: {
@@ -26,9 +26,9 @@ await splitTasks({
 });
 
 interface Args {
-  db: string;
-  filter?: Parameters<Client['databases']['query']>[0]['filter'];
-  sorts?: Parameters<Client['databases']['query']>[0]['sorts'];
+  dataSourceId: string;
+  filter?: Parameters<Client['dataSources']['query']>[0]['filter'];
+  sorts?: Parameters<Client['dataSources']['query']>[0]['sorts'];
   dateProp: string;
   time: {
     start: { hour: number; minute: number };
@@ -36,9 +36,15 @@ interface Args {
   };
 }
 
-async function splitTasks({ db, filter, sorts, dateProp, time }: Args) {
+async function splitTasks({
+  dataSourceId,
+  filter,
+  sorts,
+  dateProp,
+  time,
+}: Args) {
   const notionClient = new Client({ auth: config.notionSecret });
-  const pages = await queryAll({ database_id: db, sorts, filter });
+  const pages = await queryAll({ data_source_id: dataSourceId, sorts, filter });
 
   const updates = pages.map((p, index) => {
     const date = addDays(new Date(), index);

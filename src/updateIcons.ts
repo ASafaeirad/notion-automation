@@ -3,18 +3,19 @@
 import { Client } from '@notionhq/client';
 
 import { config } from './config.ts';
+import { DataSources } from './dbs/Database.ts';
 import { Icon } from './entities/Icon.ts';
 
 interface Args {
-  db: string;
+  dataSourceId: string;
   startCursor?: string;
-  filter?: Parameters<Client['databases']['query']>[0]['filter'];
+  filter?: Parameters<Client['dataSources']['query']>[0]['filter'];
 }
 
-const updateIcon = async ({ db, startCursor, filter }: Args) => {
+const updateIcon = async ({ dataSourceId, startCursor, filter }: Args) => {
   const notionClient = new Client({ auth: config.notionSecret });
-  const pages = await notionClient.databases.query({
-    database_id: db,
+  const pages = await notionClient.dataSources.query({
+    data_source_id: dataSourceId,
     start_cursor: startCursor,
     filter,
   });
@@ -31,8 +32,6 @@ const updateIcon = async ({ db, startCursor, filter }: Args) => {
   return Promise.all(updates);
 };
 
-const db = '83ee0ec8ee524ee5939856e689541b2b';
-
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const relationFilter = {
   property: 'Project',
@@ -46,4 +45,4 @@ const statusFilter = {
   status: { equals: 'Done' },
 };
 
-await updateIcon({ db });
+await updateIcon({ dataSourceId: DataSources.Actions });

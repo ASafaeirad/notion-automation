@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@fullstacksjs/toolbox": "4.21.0",
-    "@notionhq/client": "2.2.13",
+    "@notionhq/client": "5.3.0",
     "date-fns": "4.1.0",
     "usetube": "2.2.7",
     "zx": "8.8.5"
