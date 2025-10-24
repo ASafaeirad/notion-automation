@@ -1,9 +1,9 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import { Client } from '@notionhq/client';
 
-import { config } from './config.js';
-import { Icon } from './entities/Icon.js';
+import { config } from './config.ts';
+import { Icon } from './entities/Icon.ts';
 
 interface Args {
   db: string;

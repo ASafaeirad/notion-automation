@@ -1,14 +1,14 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import { isNull } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
 
-import { config } from './config.js';
-import type { Priority } from './dbs/Action.js';
-import { ActionDatabase, Priorities } from './dbs/Action.js';
-import type { ProjectName } from './entities/Project.js';
-import { Projects } from './entities/Project.js';
-import { Rofi } from './lib/Rofi.js';
+import { config } from './config.ts';
+import type { Priority } from './dbs/Action.ts';
+import { ActionDatabase, Priorities } from './dbs/Action.ts';
+import type { ProjectName } from './entities/Project.ts';
+import { Projects } from './entities/Project.ts';
+import { Rofi } from './lib/Rofi.ts';
 
 interface Options {
   name: string;

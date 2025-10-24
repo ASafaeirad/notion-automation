@@ -1,8 +1,8 @@
 import type { Axios } from 'axios';
 import axios from 'axios';
 
-import type { Priority } from '../dbs/index.js';
-import { Status } from '../dbs/index.js';
+import type { Priority } from '../dbs/index.ts';
+import { Status } from '../dbs/index.ts';
 import type {
   IssueResponse,
   IssueType,

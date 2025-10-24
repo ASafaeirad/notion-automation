@@ -1,12 +1,12 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import { Client } from '@notionhq/client';
 import { addDays } from 'date-fns';
 
-import { config } from './config.js';
-import { Database } from './dbs/Database.js';
-import { Time } from './entities/Day.js';
-import { queryAll } from './lib/Notion.js';
+import { config } from './config.ts';
+import { Database } from './dbs/Database.ts';
+import { Time } from './entities/Day.ts';
+import { queryAll } from './lib/Notion.ts';
 
 await splitTasks({
   db: Database.Actions,
@@ -15,8 +15,8 @@ await splitTasks({
   filter: {
     and: [
       { property: 'Status', status: { equals: 'To Do' } },
-      { property: 'Name', title: { contains: 'Grammar In Use' } },
-      // { property: 'Name', title: { starts_with: 'SE Practitioners Approach' } },
+      // { property: 'Name', title: { contains: 'Grammar In Use' } },
+      { property: 'Name', title: { starts_with: 'SE Practitioners Approach' } },
     ],
   },
   time: {

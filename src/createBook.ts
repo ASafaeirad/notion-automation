@@ -1,13 +1,13 @@
-#!/usr/bin/env bun
+#!/usr/bin/env node
 
 import { range } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
 import { addDays, setHours, setMinutes, setSeconds } from 'date-fns';
 
-import { config } from './config.js';
-import type { Priority } from './dbs/index.js';
-import { ActionDatabase } from './dbs/index.js';
-import type { IconName, ProjectName } from './entities/index.js';
+import { config } from './config.ts';
+import type { Priority } from './dbs/index.ts';
+import { ActionDatabase } from './dbs/index.ts';
+import type { IconName, ProjectName } from './entities/index.ts';
 
 interface Options {
   offset: number;

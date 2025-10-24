@@ -1,3 +1,3 @@
-export * from './Action.js';
-export * from './Database.js';
-export * from './Routine.js';
+export * from './Action.ts';
+export * from './Database.ts';
+export * from './Routine.ts';

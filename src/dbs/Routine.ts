@@ -1,8 +1,8 @@
 import type { Client } from '@notionhq/client';
 
-import type { IconName } from '../entities/index.js';
-import { Day, Icon } from '../entities/index.js';
-import { Database } from './Database.js';
+import type { IconName } from '../entities/index.ts';
+import { Day, Icon } from '../entities/index.ts';
+import { Database } from './Database.ts';
 
 export enum HabitStatus {
   Todo = 'To Do',
@@ -15,10 +15,14 @@ export interface Routine {
 }
 
 export class RoutineDatabase {
-  constructor(private client: Client) {}
+  #client: Client;
+
+  constructor(client: Client) {
+    this.#client = client;
+  }
 
   public addRoutine({ name, icon }: Routine) {
-    return this.client.pages.create({
+    return this.#client.pages.create({
       parent: { database_id: Database.Routines },
       icon: { type: 'external', external: { url: Icon(icon) } },
       properties: {

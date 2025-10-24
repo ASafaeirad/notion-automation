@@ -2,17 +2,19 @@ import { isNotNull } from '@fullstacksjs/toolbox';
 import type { Client } from '@notionhq/client';
 import type { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints';
 
-import type { IconName, ProjectName } from '../entities/index.js';
-import { Day, Icon, Projects } from '../entities/index.js';
-import { Database } from './Database.js';
+import type { IconName, ProjectName } from '../entities/index.ts';
+import { Day, Icon, Projects } from '../entities/index.ts';
+import { Database } from './Database.ts';
 
-export enum Status {
-  Todo = 'To Do',
-  InProgress = 'In Progress',
-  Done = 'Done',
-  Closed = 'Closed',
-  Suspended = 'Suspended',
-}
+export const Status = {
+  Todo: 'To Do',
+  InProgress: 'In Progress',
+  Done: 'Done',
+  Closed: 'Closed',
+  Suspended: 'Suspended',
+} as const;
+
+export type Status = typeof Status[keyof typeof Status];
 
 export type Priority = 'First' | 'Future' | 'Second' | 'Third' | 'Urgent';
 
@@ -36,7 +38,11 @@ export interface ActionItem {
 }
 
 export class ActionDatabase {
-  constructor(private client: Client) {}
+  #client: Client;
+
+  constructor(client: Client) {
+    this.#client = client;
+  }
 
   public addItem({
     name,
@@ -64,7 +70,7 @@ export class ActionDatabase {
     if (isNotNull(project))
       properties['Project'] = { relation: [{ id: Projects[project].id }] };
 
-    return this.client.pages.create({
+    return this.#client.pages.create({
       parent: { database_id: Database.Actions },
       icon: { type: 'external', external: { url: Icon(icon) } },
       children,
