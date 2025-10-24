@@ -39,6 +39,7 @@ const priorityMap: Record<JiraPriority, Priority> = {
   Lowest: 'Future',
 };
 
+// cspell:disable
 const toIssue = (data: IssueResponse): Issue => ({
   key: data.key,
   title: `${data.key}: ${data.fields.summary.trim()}`,
@@ -60,6 +61,7 @@ const toIssue = (data: IssueResponse): Issue => ({
   priority: priorityMap[data.fields.priority?.name],
   description: data.fields.description?.content,
 });
+// cspell:enable
 
 export class JiraClient {
   #apiKey: string;

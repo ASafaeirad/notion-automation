@@ -1,3 +1,4 @@
+// cspell:disable
 interface BaseBlock {
   object?: 'block';
 }
