@@ -1,7 +1,3 @@
-import type { Axios } from 'axios';
-
-import axios from 'axios';
-
 import type { Priority } from '../dbs/index.ts';
 import type {
   IssueResponse,
@@ -67,30 +63,44 @@ const toIssue = (data: IssueResponse): Issue => ({
 
 export class JiraClient {
   #apiKey: string;
-  #client: Axios;
   #username: string;
 
   constructor(apiKey: string, username: string) {
-    this.#client = new axios.Axios({
-      baseURL: 'https://estateguru.atlassian.net/rest/api/3/',
-    });
     this.#apiKey = apiKey;
     this.#username = username;
   }
 
-  public getIssues() {
-    return this.#client
-      .get('search', {
-        params: {
-          jql: 'project = "US" AND assignee = 608abece83b8c6006b0aabc3 AND status = Open ORDER BY created DESC',
-        },
-        auth: {
-          username: this.#username,
-          password: this.#apiKey,
-        },
-        responseType: 'json',
-      })
-      .then(res => JSON.parse(res.data))
-      .then<Issue[]>(data => data.issues.map(toIssue));
+  public async getIssues(): Promise<Issue[]> {
+    const url = new URL(
+      'search',
+      'https://estateguru.atlassian.net/rest/api/3/',
+    );
+    url.searchParams.set(
+      'jql',
+      'project = "US" AND assignee = 608abece83b8c6006b0aabc3 AND status = Open ORDER BY created DESC',
+    );
+
+    const data = await this.#request<{ issues: IssueResponse[] }>(
+      url.toString(),
+    );
+
+    return data.issues.map(toIssue);
+  }
+
+  async #request<T>(url: string): Promise<T> {
+    const auth = btoa(`${this.#username}:${this.#apiKey}`);
+
+    const response = await fetch(url.toString(), {
+      headers: {
+        Authorization: `Basic ${auth}`,
+        Accept: 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+
+    return response.json() as Promise<T>;
   }
 }

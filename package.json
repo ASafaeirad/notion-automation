@@ -8,9 +8,8 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
-    "@fullstacksjs/toolbox": "4.6.0",
+    "@fullstacksjs/toolbox": "4.21.0",
     "@notionhq/client": "2.2.13",
-    "axios": "1.5.0",
     "date-fns": "2.30.0",
     "usetube": "2.2.7",
     "zx": "7.2.3"

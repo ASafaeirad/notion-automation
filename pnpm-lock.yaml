@@ -9,14 +9,11 @@ importers:
   .:
     dependencies:
       '@fullstacksjs/toolbox':
-        specifier: 4.6.0
-        version: 4.6.0
+        specifier: 4.21.0
+        version: 4.21.0
       '@notionhq/client':
         specifier: 2.2.13
         version: 2.2.13
-      axios:
-        specifier: 1.5.0
-        version: 1.5.0
       date-fns:
         specifier: 2.30.0
         version: 2.30.0
@@ -454,9 +451,9 @@ packages:
       typescript:
         optional: true
 
-  '@fullstacksjs/toolbox@4.6.0':
-    resolution: {integrity: sha512-r92WQsRudqHZmSPdIWBnHonCyOVHnPVV7r1XHbPrPydHPU7spEHiaYGBzBDkldQMEUYTNFKnztoVHVRVqCWakg==}
-    engines: {node: '>=16'}
+  '@fullstacksjs/toolbox@4.21.0':
+    resolution: {integrity: sha512-XKXn++56fMPY5OD6oNsqTd/fnKbeoG8jO1PgWRWFwLRZENBztVv4RVEvBk+kc7jCCnVm5Jx2mh9Byq/reliD4w==}
+    engines: {node: '>=20'}
 
   '@fullstacksjs/tsconfig@2.0.0':
     resolution: {integrity: sha512-/blIYWSnxRO4B+dp5PCcFSRVyg+13pU+mJ5ZJxSHsyynvQt4E70XfR1n5Q4q+fMJP+XiZAMbChmHWrBg/8P5VQ==}
@@ -881,9 +878,6 @@ packages:
 
   axios@0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
-
-  axios@1.5.0:
-    resolution: {integrity: sha512-D4DdjDo5CY50Qms0qGQTTw6Q44jl7zRwY7bthds06pUGfChBCTcQs+N743eFWGEd6pRTMd6A+I87aWyFV5wiZQ==}
 
   axobject-query@4.1.0:
     resolution: {integrity: sha512-qIj0G9wZbMGNLjLmg1PT6v2mE9AH2zlnADJD/2tC6E00hgmhUOfEB6greHPAfLRSufHqROIUTkw6E+M3lH0PTQ==}
@@ -2015,9 +2009,6 @@ packages:
     resolution: {integrity: sha512-dgJaEDDL6x8ASUZ1YqWciTRrdOuYNzoOf27oHNfdyvKqHr5i0FV7FSLU+aIeFjyFgVxrpTOtQUi0BLLBymZaBw==}
     engines: {node: '>=12.0.0'}
 
-  proxy-from-env@1.1.0:
-    resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
-
   ps-tree@1.2.0:
     resolution: {integrity: sha512-0VnamPPYHl4uaU/nSFeZZpR21QAWRz+sRv4iW9+v/GS/J5U5iZB5BNN6J0RMoOvdx2gWM2+ZFMIm58q24e4UYA==}
     engines: {node: '>= 0.10'}
@@ -2922,7 +2913,7 @@ snapshots:
       - tailwindcss
       - vitest
 
-  '@fullstacksjs/toolbox@4.6.0': {}
+  '@fullstacksjs/toolbox@4.21.0': {}
 
   '@fullstacksjs/tsconfig@2.0.0(typescript@5.9.3)':
     dependencies:
@@ -3376,14 +3367,6 @@ snapshots:
   axios@0.21.4:
     dependencies:
       follow-redirects: 1.15.11
-    transitivePeerDependencies:
-      - debug
-
-  axios@1.5.0:
-    dependencies:
-      follow-redirects: 1.15.11
-      form-data: 4.0.4
-      proxy-from-env: 1.1.0
     transitivePeerDependencies:
       - debug
 
@@ -4727,8 +4710,6 @@ snapshots:
       '@protobufjs/utf8': 1.1.0
       '@types/node': 24.9.1
       long: 5.3.2
-
-  proxy-from-env@1.1.0: {}
 
   ps-tree@1.2.0:
     dependencies:
