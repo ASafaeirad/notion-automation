@@ -10,15 +10,15 @@
   "dependencies": {
     "@fullstacksjs/toolbox": "4.21.0",
     "@notionhq/client": "2.2.13",
-    "date-fns": "2.30.0",
+    "date-fns": "4.1.0",
     "usetube": "2.2.7",
-    "zx": "7.2.3"
+    "zx": "8.8.5"
   },
   "devDependencies": {
     "@fullstacksjs/eslint-config": "13.8.2",
     "@fullstacksjs/tsconfig": "2.0.0",
     "@types/node": "24.9.1",
-    "@types/usetube": "2.1.0",
+    "@types/usetube": "2.1.2",
     "cspell": "9.2.2",
     "eslint": "9.38.0",
     "prettier": "3.6.2",
