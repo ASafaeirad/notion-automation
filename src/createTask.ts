@@ -3,10 +3,11 @@
 import { isNull } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
 
-import { config } from './config.ts';
 import type { Priority } from './dbs/Action.ts';
-import { ActionDatabase, Priorities } from './dbs/Action.ts';
 import type { ProjectName } from './entities/Project.ts';
+
+import { config } from './config.ts';
+import { ActionDatabase, Priorities } from './dbs/Action.ts';
 import { Projects } from './entities/Project.ts';
 import { Rofi } from './lib/Rofi.ts';
 

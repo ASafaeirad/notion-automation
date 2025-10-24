@@ -1,8 +1,10 @@
-import { isNotNull } from '@fullstacksjs/toolbox';
 import type { Client } from '@notionhq/client';
 import type { CreatePageParameters } from '@notionhq/client/build/src/api-endpoints';
 
+import { isNotNull } from '@fullstacksjs/toolbox';
+
 import type { IconName, ProjectName } from '../entities/index.ts';
+
 import { Day, Icon, Projects } from '../entities/index.ts';
 import { Database } from './Database.ts';
 
@@ -14,7 +16,7 @@ export const Status = {
   Suspended: 'Suspended',
 } as const;
 
-export type Status = typeof Status[keyof typeof Status];
+export type Status = (typeof Status)[keyof typeof Status];
 
 export type Priority = 'First' | 'Future' | 'Second' | 'Third' | 'Urgent';
 

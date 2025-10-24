@@ -1,4 +1,5 @@
 import { Client } from '@notionhq/client';
+
 import { config } from '../config';
 
 type Result = Awaited<ReturnType<Client['databases']['query']>>['results'];

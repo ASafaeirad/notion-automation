@@ -1,6 +1,7 @@
 import type { Client } from '@notionhq/client';
 
 import type { IconName } from '../entities/index.ts';
+
 import { Day, Icon } from '../entities/index.ts';
 import { Database } from './Database.ts';
 

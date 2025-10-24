@@ -5,9 +5,10 @@ import { Client } from '@notionhq/client';
 import { addDays } from 'date-fns';
 import { getPlaylistVideos } from 'usetube';
 
+import type { IconName, ProjectName } from './entities/index.ts';
+
 import { config } from './config.ts';
 import { ActionDatabase } from './dbs/Action.ts';
-import type { IconName, ProjectName } from './entities/index.ts';
 import { iconNames, PlayListVideo, Projects } from './entities/index.ts';
 import { Rofi } from './lib/Rofi.ts';
 

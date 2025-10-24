@@ -67,7 +67,7 @@ export const iconNames = [
   'document',
 ] as const;
 
-export type IconName = typeof iconNames[number];
+export type IconName = (typeof iconNames)[number];
 
 export const Icon = (name: IconName) =>
   `https://raw.githubusercontent.com/ASafaeirad/notion-icons/main/icons/${name}.svg`;

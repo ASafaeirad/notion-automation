@@ -1,7 +1,8 @@
 import { isNullOrEmptyString } from '@fullstacksjs/toolbox';
 import { startOfTomorrow } from 'date-fns';
 import { $ } from 'zx';
-const removeLineEnding = (x: string) => x.replace(/(\r\n|\n|\r)/gm, '');
+
+const removeLineEnding = (x: string) => x.replace(/\r\n|\n|\r/g, '');
 
 export const Rofi = {
   text: async (name: string) => {
@@ -47,8 +48,8 @@ export const Rofi = {
     const dates = ['Unassigned', 'Today', 'Tomorrow'] as const;
     const list = dates.join('\n');
     const { stdout } = await $`echo ${list} | rofi -dmenu -i -p ${name}`;
-    const selected = removeLineEnding(stdout) as typeof dates[number];
-    const map: Record<typeof dates[number], Date | undefined> = {
+    const selected = removeLineEnding(stdout) as (typeof dates)[number];
+    const map: Record<(typeof dates)[number], Date | undefined> = {
       Today: new Date(),
       Tomorrow: startOfTomorrow(),
       Unassigned: undefined,

@@ -43,6 +43,7 @@ interface JiraIssueType {
   hierarchyLevel: number;
 }
 
+// cspell:disable
 export interface ParentFields {
   summary: string;
   status: Status;
@@ -153,14 +154,9 @@ export interface Watches {
   isWatching: boolean;
 }
 
-export interface Issuerestrictions {}
-
 export interface IssueRestriction {
-  issuerestrictions: Issuerestrictions;
   shouldDisplay: boolean;
 }
-
-export interface Timetracking {}
 
 export interface Comment {
   comments: any[];
@@ -205,7 +201,6 @@ export interface Fields {
   updated: string;
   timeoriginalestimate?: any;
   description?: { content: any };
-  timetracking: Timetracking;
   security?: any;
   attachment: any[];
   summary: string;

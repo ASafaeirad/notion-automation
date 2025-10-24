@@ -1,3 +1,4 @@
+/* eslint-disable n/no-process-env */
 import fs from 'node:fs';
 import path from 'node:path';
 

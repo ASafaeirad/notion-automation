@@ -4,10 +4,11 @@ import { range } from '@fullstacksjs/toolbox';
 import { Client } from '@notionhq/client';
 import { addDays, setHours, setMinutes, setSeconds } from 'date-fns';
 
-import { config } from './config.ts';
 import type { Priority } from './dbs/index.ts';
-import { ActionDatabase } from './dbs/index.ts';
 import type { IconName, ProjectName } from './entities/index.ts';
+
+import { config } from './config.ts';
+import { ActionDatabase } from './dbs/index.ts';
 
 interface Options {
   offset: number;

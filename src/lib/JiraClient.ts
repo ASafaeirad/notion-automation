@@ -1,8 +1,8 @@
 import type { Axios } from 'axios';
+
 import axios from 'axios';
 
 import type { Priority } from '../dbs/index.ts';
-import { Status } from '../dbs/index.ts';
 import type {
   IssueResponse,
   IssueType,
@@ -10,6 +10,8 @@ import type {
   JiraStatus,
   Member,
 } from './IssueResponse';
+
+import { Status } from '../dbs/index.ts';
 
 export interface Issue {
   key: string;
@@ -64,23 +66,27 @@ const toIssue = (data: IssueResponse): Issue => ({
 });
 
 export class JiraClient {
-  client: Axios;
+  #apiKey: string;
+  #client: Axios;
+  #username: string;
 
-  constructor(private apiKey: string, private username: string) {
-    this.client = new axios.Axios({
+  constructor(apiKey: string, username: string) {
+    this.#client = new axios.Axios({
       baseURL: 'https://estateguru.atlassian.net/rest/api/3/',
     });
+    this.#apiKey = apiKey;
+    this.#username = username;
   }
 
   public getIssues() {
-    return this.client
+    return this.#client
       .get('search', {
         params: {
           jql: 'project = "US" AND assignee = 608abece83b8c6006b0aabc3 AND status = Open ORDER BY created DESC',
         },
         auth: {
-          username: this.username,
-          password: this.apiKey,
+          username: this.#username,
+          password: this.#apiKey,
         },
         responseType: 'json',
       })
