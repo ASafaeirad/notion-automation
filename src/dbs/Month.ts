@@ -21,13 +21,14 @@ export class MonthDatabase {
     this.#client = client;
   }
 
-  async getOrCreateThisMonth() {
+  async getOrCreateMonth(date: Date) {
+    const monthName = Month(date);
     let month = await this.#client.dataSources
       .query({
         data_source_id: DataSources.Months,
         filter: {
           property: 'Name',
-          title: { equals: Month(new Date()) },
+          title: { equals: monthName },
         },
       })
       .then(res => res.results[0]);
@@ -36,7 +37,7 @@ export class MonthDatabase {
       month = await this.#client.pages.create({
         parent: { database_id: Database.Months },
         properties: {
-          Name: { title: [{ text: { content: Month(new Date()) } }] },
+          Name: { title: [{ text: { content: monthName } }] },
           Years: { relation: [{ id: Pages.Year }] },
         },
         template: {

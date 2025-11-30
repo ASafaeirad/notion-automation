@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Client } from '@notionhq/client';
+import { addMonths } from 'date-fns/addMonths';
 
 import { config } from './config.ts';
 import { DebitDatabase } from './dbs/Debit.ts';
@@ -13,7 +14,7 @@ async function createFinancialMonth() {
   const financialRecordDatabase = new FinancialRecordDatabase(notionClient);
   const monthDatabase = new MonthDatabase(notionClient);
 
-  const month = await monthDatabase.getOrCreateThisMonth();
+  const month = await monthDatabase.getOrCreateMonth(addMonths(new Date(), 1));
   const debits = await actionDatabase.getMonthly();
   const promises = config.incomes.map(income => {
     return financialRecordDatabase.createRecord({
