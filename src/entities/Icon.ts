@@ -65,6 +65,7 @@ export const iconNames = [
   'ts',
   'receipt',
   'document',
+  'cloud',
 ] as const;
 
 export type IconName = (typeof iconNames)[number];

@@ -31,6 +31,8 @@ export const Projects = {
     id: 'a4356df4bc94436ea13416a5d1c9928d',
     icon: 'notebook',
   },
+  FemCloud: { id: '2df7815d2c03803f8347c876d2383b1d', icon: 'cloud' },
+  GitBook: { id: '2df7815d2c0380d08376f9da25a0852f', icon: 'github' },
 } satisfies Record<string, Project>;
 
 export type ProjectName = keyof typeof Projects;
