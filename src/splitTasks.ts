@@ -2,10 +2,12 @@
 
 import { Client } from '@notionhq/client';
 import { addDays } from 'date-fns';
+import PQueue from 'p-queue';
 
 import { config } from './config.ts';
 import { DataSources } from './dbs/Database.ts';
-import { Time } from './entities/Day.ts';
+import { Day } from './entities/Day.ts';
+import { Projects } from './entities/Project.ts';
 import { queryAll } from './lib/Notion.ts';
 
 await splitTasks({
@@ -15,8 +17,7 @@ await splitTasks({
   filter: {
     and: [
       { property: 'Status', status: { equals: 'To Do' } },
-      // { property: 'Name', title: { contains: 'Grammar In Use' } },
-      { property: 'Name', title: { starts_with: 'SE Practitioners Approach' } },
+      { property: 'Project', relation: { contains: Projects.GitBook.id } },
     ],
   },
   time: {
@@ -43,23 +44,22 @@ async function splitTasks({
   dateProp,
   time,
 }: Args) {
+  const queue = new PQueue({ concurrency: 8 });
   const notionClient = new Client({ auth: config.notionSecret });
   const pages = await queryAll({ data_source_id: dataSourceId, sorts, filter });
 
-  const updates = pages.map((p, index) => {
+  pages.forEach((p, index) => {
     const date = addDays(new Date(), index);
-    return notionClient.pages.update({
-      page_id: p.id,
-      properties: {
-        [dateProp]: {
-          date: {
-            start: Time({ date, ...time.start }),
-            end: Time({ date, ...time.end }),
-          },
+    queue.add(() => {
+      console.log(`Updating ${p.id} to ${Day(date)}`);
+      return notionClient.pages.update({
+        page_id: p.id,
+        properties: {
+          [dateProp]: { date: { start: Day(date) } },
         },
-      },
+      });
     });
   });
 
-  return Promise.all(updates);
+  return queue.onIdle();
 }
