@@ -1,6 +1,6 @@
 import { Client } from '@notionhq/client';
 
-import { config } from '../config';
+import { config } from '../config.ts';
 
 type Result = Awaited<ReturnType<Client['dataSources']['query']>>['results'];
 
