@@ -8,21 +8,21 @@
     "lint": "eslint ./src"
   },
   "dependencies": {
-    "@fullstacksjs/toolbox": "4.21.0",
-    "@notionhq/client": "5.3.0",
+    "@fullstacksjs/toolbox": "4.22.0",
+    "@notionhq/client": "5.16.0",
     "date-fns": "4.1.0",
-    "p-queue": "9.1.0",
+    "p-queue": "9.1.1",
     "usetube": "2.2.7",
     "zx": "8.8.5"
   },
   "devDependencies": {
-    "@fullstacksjs/eslint-config": "13.8.2",
+    "@fullstacksjs/eslint-config": "14.2.0",
     "@fullstacksjs/tsconfig": "2.0.0",
-    "@types/node": "24.9.1",
+    "@types/node": "25.5.2",
     "@types/usetube": "2.1.2",
-    "cspell": "9.2.2",
+    "cspell": "10.0.0",
     "eslint": "9.38.0",
-    "prettier": "3.6.2",
-    "typescript": "5.9.3"
+    "prettier": "3.8.1",
+    "typescript": "6.0.2"
   }
 }
