@@ -13,7 +13,7 @@ export const Database = {
 } as const;
 
 export const Pages = {
-  Year: '1677815d2c03807581dcdfb3f4c1b352',
+  Year: '2b97815d2c038082b883cdf29ab11352',
 } as const;
 
 export const Templates = {

@@ -9,20 +9,20 @@
   },
   "dependencies": {
     "@fullstacksjs/toolbox": "4.22.0",
-    "@notionhq/client": "5.16.0",
+    "@notionhq/client": "5.20.0",
     "date-fns": "4.1.0",
-    "p-queue": "9.1.1",
+    "p-queue": "9.1.2",
     "usetube": "2.2.7",
     "zx": "8.8.5"
   },
   "devDependencies": {
     "@fullstacksjs/eslint-config": "14.2.0",
     "@fullstacksjs/tsconfig": "2.0.0",
-    "@types/node": "25.5.2",
+    "@types/node": "25.6.0",
     "@types/usetube": "2.1.2",
     "cspell": "10.0.0",
     "eslint": "9.38.0",
-    "prettier": "3.8.1",
-    "typescript": "6.0.2"
+    "prettier": "3.8.3",
+    "typescript": "6.0.3"
   }
 }
