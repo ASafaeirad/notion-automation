@@ -17,7 +17,7 @@ await splitTasks({
   filter: {
     and: [
       { property: 'Status', status: { equals: 'To Do' } },
-      { property: 'Project', relation: { contains: Projects.GitBook.id } },
+      { property: 'Project', relation: { contains: Projects.LearnRust.id } },
     ],
   },
   time: {
